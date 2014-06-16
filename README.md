@@ -24,7 +24,7 @@ jack.full_name
 
 ### Demo
 
-Lets take a look at the lib/person.rb and run it.
+Lets take a look at the lib/person.rb and run the bin/person_app.rb.
 
 ### Lab 
 Modify the the signed_contract instance method to:  
