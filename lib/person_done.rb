@@ -7,7 +7,7 @@ class Person
   def initialize(fname, lname)
     @first_name, @last_name = fname, lname
     @status = 'inactive'
-  end 
+  end
 
   def full_name
     "#{@first_name} #{@last_name}"
@@ -21,9 +21,9 @@ class Person
   end
 
   def signed_contract
-    # Problem: 
-    # Will not call the setter method to and notify, or say, that the status has
-    # changed!
+    # Problem:
+    # Will not call the setter method to and notify, or say, that the status
+    # has changed!
     # @status = 'active'
 
     # Problem:
@@ -34,4 +34,4 @@ class Person
     # This will notify, or say, that theh Person's status has changed.
     self.status = 'active'
   end
-end       
+end
