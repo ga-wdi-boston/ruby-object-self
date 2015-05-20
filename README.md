@@ -1,3 +1,13 @@
+![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
+
+## Objectives 
+* Use **self** to determine runtime context.
+* Use **self** to invoke a setter method.
+* Use **self** to define a class method.
+* Define and use class instance variables and class methods.
+* Practice Object declaration, inheritence and OOP.
+
+
 ## Ruby Self
 
 **Self** changes as you run a program. At times **self** is going to be a particular object. Later, **self** could be a different object. In fact, at some times in a running program **self** may be a *class*.
