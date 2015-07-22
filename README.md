@@ -1,185 +1,106 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-## Objectives 
-* Use **self** to determine runtime context.
-* Use **self** to invoke a setter method.
-* Use **self** to define a class method.
+Ruby: Class Methods \& Context
+==============================
+
+You may have noticed that not all methods we use with Rails follow the `Object.new(*args)` pattern we introduced with object-oriented programming (OOP) in Ruby. We're already familiar with defining and using setters and getters on instances of classes, but what does it mean when we call a method directly on a class instead of an instance?
+
+For example, let's say we have a model named `Person` that inherits from `ActiveRecord::Base`. We can create new objects by using `Person.new`.
+
+```ruby
+jeff = Person.new(given_name: "Jeffrey")
+jeff.given_name #=> "Jeffrey"
+```
+
+We can also get existing objects from the database using `Person.find`.
+
+```ruby
+Person.find_by(given_name: "Jeffrey")
+```
+
+The method `#given_name` is called on an instance, and hence is known as an instance method. The methods `::new` and `::find_by` are called directly on the class, and hence are known as class methods.
+
+Sometimes we'd like to create our own class methods, or use setters and getters already provided by `ActiveRecord` to work on our objects. In order to accomplish these goals, we first need to understand context.
+
+Objectives
+----------
+* Use `self` to determine runtime context.
+* Use `self` to invoke a getter or setter method.
 * Define and use class instance variables and class methods.
-* Practice Object declaration, inheritence and OOP.
 
+Context
+-------
 
-## Ruby Self
+Just like JavaScript's `this` keyword, `self` in Ruby is a reference to the **runtime context** of your program. We can use `self` instead of referring to particular instances to get or set data on these objects. Think of `self` as a pronoun for any object in our system.
 
-**Self** changes as you run a program. At times **self** is going to be a particular object. Later, **self** could be a different object. In fact, at some times in a running program **self** may be a *class*.
+Just like pronouns, `self` changes depending on the context in which it is used. At times `self` is going to be a particular object. Later, `self` could be a different object. In fact, at some times in a running program `self` may be a *class*.
 
-At every point in time when your program is running there is one and only one class or object that **self** is referencing or pointing to. 
+At every point in time when your program is running there is one and only one class or object that `self` is referencing or pointing to.
 
-**Self** represents the **Runtime Context** of your program. At a specific time in the life of your program the context may change. You may be running code inside of a instance method and **self** would point to the instance that invoked the method.
+At any time during the life of your program the context may change. You may be running code inside of an instance method and `self` would point to the instance that invoked the method, or you could be inside a class definition and `self` would point to the class itself.
 
+`self` will point to one of three runtime contexts: global context, object context, or class context.
 
+### Global
 
-Self will point to one of three runtime contexts:
-
-* Global context. For all methods invoked without a class or object **self** will be an instance of the Object class, *main*.
+For all methods invoked without a class or object `self` will be an instance of the Object class, *main*.
 
 ```ruby
-puts "Hello There self is #{self}"
+puts "In the global scope, self is #{self}"
 
-def hello_world
-  puts "in method hello_world self is #{self}"
+def example
+  puts "In a method attached to the global scope, self is #{self}."
 end
 
-hello_world
-
-puts "Hello There self class name is #{self.class.name}"
+example
 ```
-* Object context. For all methods invoked on an object **self** will point to that object.  
+
+### Object
+
+For all methods invoked on an object `self` will point to that object.
 
 ```ruby
 class Person
-   def initialize(fname, lname)
-     @first_name = fname
-     @last_name = lname
-   end
-   
-   def yo
-      "Yo, #{@first_name} #{@last_name}"
-      puts "in Person#yo self is #{self}"
-   end
-end
-
-p1 = Person.new "Fred", "Flintstone"
-p1.yo
-```
-	
-* Class context. For all methods invoked in a class **self** will point to that class.  
-
-```ruby
-class Person
-  puts "in Person class self is #{self}"     
-end
-```
-## Demo: When to use **self** in instance methods.
-
-Lets take a look at the lib/person.rb and run the bin/person_app.rb.
-
-Modify the the signed_contract instance method to:  
-
-1. Test the status instance variable.
-
-	* Use the status instance variable, @status = active, only.  
-	* Use binding.pry to look at self.
-	* Run the bin/person_app.rb.
-
-2. Test the status local variable.  
-
-	* Use the status local variable, status = active, only.  
-	* Use binding.pry to look at self.  
-	* Run the bin/person_app.rb.  
-	
-3. Test the status instance method.	
-
-	* Use the status instance method, self.status = active, only.
-	* Use binding.pry to look at self.  
-	* Run the bin/person_app.rb.
-
-
-
-Lets discuss and explain this behavior.
-
-## Lab
-
-* Create an Auto class that has model, make and year attributes.   
-* All Auto instances must be immutable, they can't be updated.
-* When a auto object is created and string interpolated it should display ``<year> <model> <make>``.  
-
-	>> For example a Ford Mustang that was manufactured in 1967 should be shown as "1967 Ford Mustang".  
-	
-* Create a subclass DealerAuto that inherits from the Auto class and adds a price attribute.
-* When a DealerAuto price setter method is invoked to change it's price it must ALSO announce this change using the OSX `say` command.  
-
-```
-	%x{ say "Changing #{self} price from #{self.price} to #{new_price}" }
-```
-
-Note: Changing the price with this price setter method has this *side effect*. 
-
-* Create a DealerAuto#discount method that takes one argument, the percentage of the current price to discount. *Calling mustang.discount(10) will take 10 percent off of the mustang's price.*
-
-In this DealerAuto#discount method change the price using.
-
-1. An instance variable, @price.  
- ```
- @price = @price - @price * (percentage.to_f/100.0)
- ```
- 
-2. A local variable, price.  
-```
-price = price - price * (percentage.to_f/100.0)
-```
-3. Using the price setter.
-```
-   self.price = price - price * (percentage.to_f/100.0)
-```
-
-For each of the above explain the behavior to another student and an instructor. 
-
-Which of the above should one use?
-
-## Class variables and methods.
-
-Sometimes a method or a variable is associated with a class, not an object. 
-
-For example, we may want to generate id's for each Person object we create. So, we'll create an attribute that is shared by all Person instances. This is called a **class variable.**
-
-```ruby
-class Person
-  # class variable that will keep a running count
-  # of all the people created.
-  @person_counter = 0
-...
-```
-
-And if we want to create a method that is shared by all Person instances we can create a **class method**.
-
-```ruby
-class Person
-  # class variable that will keep a running count
-  # of all the people created.
-  @person_counter = 0
-
-  # use the person counter to generate an unique ID for
-  # each person. 
-  def self.getID
-    @person_counter += 1
+  def whoami
+    puts "In an instance method, self is #{self}."
   end
+end
 
-  # Same as above, you know why right?
-  # def Person.getID
-  #  @person_counter += 1
-  # end
-  
-  attr_reader :first_name, :status, :id
-
-  def initialize(fname, lname)
-	...
-	# set this person's ID using the class method
-   @id = Person.getID
-  end
+Person.new.whoami
 
 ```
 
+### Class
 
-### Self used inside the class definition.
+For all methods invoked in a class `self` will point to that class.
 
-The variable _self_ when used inside the class definition, __but not inside the instance methods__, refers to the Class itself.
+```ruby
+class Person
+  puts "In a class,  self is #{self}."
+end
+```
 
-In the definition of the class method, Person.getID, we see that **self** refers to the Person class itself.
+Getters and Setters
+-------------------
 
-### Lab
+Have a look at [`lib/person.rb`](lib/person.rb). Notice how our custom setter has a side effect? Take a moment to read the code. Then load the file in a console and try running the following snippets. Does each do what you expected? What does `self` refer to?
 
-* In the Auto class create a class method that will generate a Vechicle ID Number, VIN. 
+```ruby
+person = Person.new.status = "ready"
+person.log_in
+person.log_out
+```
 
-* (Bonus) Maybe you can figure out how this is done using this [Wikipedia Page](http://en.wikipedia.org/wiki/Vehicle_identification_number)
+When we're using Rails and `ActiveRecord`, it's best practice to use `self.foo` and `self.foo =` instead of `@foo` and `@foo =`.
 
+Class Methods
+-------------
 
+Look at the fode in [`lib/cat.rb`](lib/cat.rb). We've used instance variables inside instance methods. What do instance variables inside classes do? This could uses a counter variable on the **instance of the class**, so each time a new cat is created, we get closer to becoming crazy cat people.
+
+Implicit Receiver
+-----------------
+
+`self` is always the implicit receiver inside method definitions. That means when we're inside an instance method and we want to work on the instance, we don't have to use `self` to refer to it.
+
+Combined with the implicit returns, this makes Ruby code very concise, but it also means we have to pay attention to where we are when we're writing code!
