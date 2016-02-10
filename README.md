@@ -1,7 +1,6 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-Ruby: Class Methods \& Context
-==============================
+#Ruby: Class Methods \& Context
 
 You may have noticed that not all methods we use with Rails follow the `Object.new(*args)` pattern we introduced with object-oriented programming (OOP) in Ruby. We're already familiar with defining and using setters and getters on instances of classes, but what does it mean when we call a method directly on a class instead of an instance?
 
@@ -22,14 +21,15 @@ The method `#given_name` is called on an instance, and hence is known as an inst
 
 Sometimes we'd like to create our own class methods, or use setters and getters already provided by `ActiveRecord` to work on our objects. In order to accomplish these goals, we first need to understand context.
 
-Objectives
-----------
-* Determine runtime context using `self`.
-* Inoke a getter or setter method using `self`.
-* Define and use class instance variables and class methods.
+## Objectives
 
-Context
--------
+Developers should be able to:
+
+- Determine runtime context using `self`.
+- Inoke a getter or setter method using `self`.
+- Define and use class instance variables and class methods.
+
+## Context
 
 Just like JavaScript's `this` keyword, `self` in Ruby is a reference to the **runtime context** of your program. We can use `self` instead of referring to particular instances to get or set data on these objects. Think of `self` as a pronoun for any object in our system.
 
@@ -80,8 +80,7 @@ class Person
 end
 ```
 
-Getters and Setters
--------------------
+##Getters and Setters
 
 Have a look at [`lib/person.rb`](lib/person.rb). Notice how our custom setter has a side effect? Take a moment to read the code. Then load the file in a console and try running the following snippets. Does each do what you expected? What does `self` refer to?
 
@@ -93,13 +92,7 @@ person.log_out
 
 When we're using Rails and `ActiveRecord`, it's best practice to use `self.foo` and `self.foo =` instead of `@foo` and `@foo =`.
 
-Class Methods
--------------
-
-Look at the fode in [`lib/cat.rb`](lib/cat.rb). We've used instance variables inside instance methods. What do instance variables inside classes do? This could uses a counter variable on the **instance of the class**, so each time a new cat is created, we get closer to becoming crazy cat people.
-
-Implicit Receiver
------------------
+## Implicit Receiver
 
 `self` is always the implicit receiver inside method definitions. That means when we're inside an instance method and we want to work on the instance, we don't have to use `self` to refer to it.
 
