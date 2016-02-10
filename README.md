@@ -92,10 +92,6 @@ person.log_out
 
 When we're using Rails and `ActiveRecord`, it's best practice to use `self.foo` and `self.foo =` instead of `@foo` and `@foo =`.
 
-## Class Methods
-
-Look at the fode in [`lib/cat.rb`](lib/cat.rb). We've used instance variables inside instance methods. What do instance variables inside classes do? This could uses a counter variable on the **instance of the class**, so each time a new cat is created, we get closer to becoming crazy cat people.
-
 ## Implicit Receiver
 
 `self` is always the implicit receiver inside method definitions. That means when we're inside an instance method and we want to work on the instance, we don't have to use `self` to refer to it.
