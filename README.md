@@ -90,6 +90,18 @@ person.log_in
 person.log_out
 ```
 
+##Lab: Putting it All Together
+
+Using the code provided in [`lib/patriots.rb`](lib/patriots.rb) make your own
+class with at least two instance methods that utilize `self` within them and
+`puts` it to the console.
+
+Some possibilities are:
+- Sports teams whose output changes based on the method.
+- Animals whose output changes based on the method.
+- People whose output changes based on the method.
+- Your own choosing.
+
 When we're using Rails and `ActiveRecord`, it's best practice to use `self.foo` and `self.foo =` instead of `@foo` and `@foo =`.
 
 ## Implicit Receiver
