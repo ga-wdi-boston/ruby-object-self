@@ -89,18 +89,16 @@ person = Person.new.status = "ready"
 person.log_in
 person.log_out
 ```
+##Lab: Using Self
 
-##Lab: Putting it All Together
+Experiment with the code provided in [`lib/method_chainer.rb`](lib/method_chainer.rb)
 
-Using the code provided in [`lib/patriots.rb`](lib/patriots.rb) make your own
-class with at least two instance methods that utilize `self` within them and
-`puts` it to the console.
+Think about the following:
+- What is the return value if `self` is the last line of the instance method?
+- What is the return value of the instance method without `self`?
+- Try chaining methods, does commenting out `self` have an effect?
 
-Some possibilities are:
-- Sports teams whose output changes based on the method.
-- Animals whose output changes based on the method.
-- People whose output changes based on the method.
-- Your own choosing.
+
 
 When we're using Rails and `ActiveRecord`, it's best practice to use `self.foo` and `self.foo =` instead of `@foo` and `@foo =`.
 
