@@ -26,7 +26,7 @@ Sometimes we'd like to create our own class methods, or use setters and getters 
 Developers should be able to:
 
 - Determine runtime context using `self`.
-- Inoke a getter or setter method using `self`.
+- Invoke a getter or setter method using `self`.
 - Define and use class instance variables and class methods.
 
 ## Context
