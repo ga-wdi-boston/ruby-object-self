@@ -108,3 +108,9 @@ When we're using Rails and `ActiveRecord`, it's best practice to use `self.foo` 
 `self` is always the implicit receiver inside method definitions. That means when we're inside an instance method and we want to work on the instance, we don't have to use `self` to refer to it.
 
 Combined with the implicit returns, this makes Ruby code very concise, but it also means we have to pay attention to where we are when we're writing code!
+
+## [License](LICENSE)
+
+1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
+1.  All software code is licensed under GNU GPLv3. For commercial use or
+    alternative licensing, please contact legal@ga.co.
