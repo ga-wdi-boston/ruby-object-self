@@ -1,3 +1,4 @@
+# football team class
 class Patriots
   attr_accessor :status
   def initialize
