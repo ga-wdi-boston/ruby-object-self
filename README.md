@@ -2,6 +2,19 @@
 
 #Ruby: Class Methods \& Context
 
+## Prerequisites
+
+- [ruby-enumerable-comparable](https://github.com/ga-wdi-boston/ruby-enumerable-comparable)
+
+## Preparation
+
+1.  Fork and clone this repository.
+ [FAQ](https://github.com/ga-wdi-boston/meta/wiki/ForkAndClone)
+1.  Create a new branch, `training`, for your work.
+1.  Checkout to the `training` branch.
+1.  Install dependencies with `bundle install`.
+
+
 You may have noticed that not all methods we use with Rails follow the `Object.new(*args)` pattern we introduced with object-oriented programming (OOP) in Ruby. We're already familiar with defining and using setters and getters on instances of classes, but what does it mean when we call a method directly on a class instead of an instance?
 
 For example, let's say we have a model named `Person` that inherits from `ActiveRecord::Base`. We can create new objects by using `Person.new`.
