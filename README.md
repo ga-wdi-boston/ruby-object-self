@@ -87,9 +87,13 @@ class Person
 end
 ```
 
-##Getters and Setters
+##Lab: Getters and Setters
 
-Have a look at [`lib/person.rb`](lib/person.rb). Notice how our custom setter has a side effect? Take a moment to read the code. Then load the file in a console and try running the following snippets. Does each do what you expected? What does `self` refer to?
+Have a look at [`lib/person.rb`](lib/person.rb). Notice how our custom setter has a side effect? Take a moment to read the code, and write comments with what you expect the code to do. Then load the file in a console and try running the following snippets.
+`pry`
+`>>> require_relative 'lib/person.rb'`
+
+Does each do what you expected? What does `self` refer to?
 
 ```ruby
 person = Person.new
@@ -97,6 +101,7 @@ person.status = "ready"
 person.log_in
 person.log_out
 ```
+
 ##Lab: Using Self
 
 Experiment with the code provided in [`lib/method_chainer.rb`](lib/method_chainer.rb)
