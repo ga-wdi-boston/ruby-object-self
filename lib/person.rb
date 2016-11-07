@@ -19,7 +19,7 @@ class Person
 
   def log_out
     # Problem:
-    # Will not call the setter method to and notify, or say, that the status
+    # Will not call the setter method to and notify -- nor say -- that the status
     # has changed!
     @status = 'offline'
   end
