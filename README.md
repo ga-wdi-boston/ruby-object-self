@@ -17,22 +17,16 @@
 
 You may have noticed that not all methods we use with Rails follow the `Object.new(*args)` pattern we introduced with object-oriented programming (OOP) in Ruby. We're already familiar with defining and using setters and getters on instances of classes, but what does it mean when we call a method directly on a class instead of an instance?
 
-For example, let's say we have a model named `Person` that inherits from `ActiveRecord::Base`. We can create new objects by using `Person.new`.
+For example, let's say we have a model named `Person`. We can create new objects by using `Person.new`.
 
 ```ruby
 jeff = Person.new(given_name: "Jeffrey")
 jeff.given_name #=> "Jeffrey"
 ```
 
-We can also get existing objects from the database using `Person.find`.
-
-```ruby
-Person.find_by(given_name: "Jeffrey")
-```
-
 The method `#given_name` is called on an instance, and hence is known as an instance method. The methods `::new` and `::find_by` are called directly on the class, and hence are known as class methods.
 
-Sometimes we'd like to create our own class methods, or use setters and getters already provided by `ActiveRecord` to work on our objects. In order to accomplish these goals, we first need to understand context.
+Sometimes we'd like to create our own class methods, or use setters and getters already provided by the parent (super) class to work on our objects. In order to accomplish these goals, we first need to understand context.
 
 ## Objectives
 
@@ -112,9 +106,8 @@ Think about the following:
 - What is the return value of the instance method without `self`?
 - Try chaining methods, does commenting out `self` have an effect?
 
-
-
-When we're using Rails and `ActiveRecord`, it's best practice to use `self.foo` and `self.foo =` instead of `@foo` and `@foo =`.
+### Best Practices
+It's best practice to use `self.foo` and `self.foo =` instead of `@foo` and `@foo =`.
 
 ## Implicit Receiver
 
