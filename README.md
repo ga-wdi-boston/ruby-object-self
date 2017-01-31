@@ -89,11 +89,14 @@ end
 
 ##Lab: Getters and Setters
 
-Have a look at [`lib/person.rb`](lib/person.rb). Notice how our custom setter has a side effect? Take a moment to read the code, and write comments with what you expect the code to do. Then load the file in a console and try running the following snippets.
+Have a look at [`lib/person.rb`](lib/person.rb). Notice how our custom
+setter has a side effect? Take a moment to read the code, and write
+comments with what you expect the code to do. Then load the file in a
+console and then try running the snippets below.
 `pry`
 `>>> require_relative 'lib/person.rb'`
 
-Does each do what you expected? What does `self` refer to?
+Does each line do what you expected? What does `self` refer to?
 
 ```ruby
 person = Person.new
