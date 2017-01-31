@@ -1,4 +1,6 @@
-#for chaining methods
+# frozen_string_literal: true
+
+# for chaining methods
 class MethodChainer
   attr_reader :content
 

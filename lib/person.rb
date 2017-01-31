@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Define a Person class
 class Person
   attr_reader :status
@@ -10,7 +12,7 @@ class Person
     @status = new_status
 
     # Side Effect of changing a Person's status is to say it
-    %x{ say "Status changed to #{status}" }
+    %x(`say` "Status changed to #{status}")
   end
 
   def log_in
@@ -19,7 +21,8 @@ class Person
 
   def log_out
     # Problem:
-    # Will not call the setter method to and notify -- nor say -- that the status
+    # Will not call the setter method to and notify -- nor say --
+    # that the status
     # has changed!
     @status = 'offline'
   end
