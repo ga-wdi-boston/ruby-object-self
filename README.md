@@ -14,6 +14,15 @@
 1.  Checkout to the `training` branch.
 1.  Install dependencies with `bundle install`.
 
+## Objectives
+
+Developers should be able to:
+
+- Determine runtime context using `self`.
+- Invoke a getter or setter method using `self`.
+- Define and use class instance variables and class methods.
+
+## Introduction
 
 You may have noticed that not all methods we use with Rails follow the `Object.new(*args)` pattern we introduced with object-oriented programming (OOP) in Ruby. We're already familiar with defining and using setters and getters on instances of classes, but what does it mean when we call a method directly on a class instead of an instance?
 
@@ -27,14 +36,6 @@ jeff.given_name #=> "Jeffrey"
 The method `#given_name` is called on an instance, and hence is known as an instance method. The methods `::new` and `::find_by` are called directly on the class, and hence are known as class methods.
 
 Sometimes we'd like to create our own class methods, or use setters and getters already provided by the parent (super) class to work on our objects. In order to accomplish these goals, we first need to understand context.
-
-## Objectives
-
-Developers should be able to:
-
-- Determine runtime context using `self`.
-- Invoke a getter or setter method using `self`.
-- Define and use class instance variables and class methods.
 
 ## Context
 
@@ -87,7 +88,7 @@ class Person
 end
 ```
 
-##Lab: Getters and Setters
+## Lab: Getters and Setters
 
 Have a look at [`lib/person.rb`](lib/person.rb). Notice how our custom
 setter has a side effect? Take a moment to read the code, and write
@@ -105,7 +106,7 @@ person.log_in
 person.log_out
 ```
 
-##Lab: Using Self
+## Lab: Using Self
 
 Experiment with the code provided in [`lib/method_chainer.rb`](lib/method_chainer.rb)
 
