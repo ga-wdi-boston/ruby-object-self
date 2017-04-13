@@ -41,7 +41,7 @@ Sometimes we'd like to create our own class methods, or use setters and getters 
 
 Just like JavaScript's `this` keyword, `self` in Ruby is a reference to the **runtime context** of your program. We can use `self` instead of referring to particular instances to get or set data on these objects. Think of `self` as a pronoun for any object in our system.
 
-Just like pronouns, `self` changes depending on the context in which it is used. At times `self` is going to be a particular object. Later, `self` could be a different object. In fact, at some times in a running program `self` may be a *class*.
+Just like pronouns, `self` changes depending on the context in which it is used. At times `self` is going to refer to a particular object. Later, `self` could refer to a different object. In fact, at some times in a running program `self` may point to a *class*.
 
 At every point in time when your program is running there is one and only one class or object that `self` is referencing or pointing to.
 
