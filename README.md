@@ -24,7 +24,7 @@ Developers should be able to:
 
 ## Introduction
 
-You may have noticed that not all methods we use with Rails follow the `Object.new(*args)` pattern we introduced with object-oriented programming (OOP) in Ruby. We're already familiar with defining and using setters and getters on instances of classes, but what does it mean when we call a method directly on a class instead of an instance?
+You may have noticed that not all methods we use with Ruby follow the `Object.new(*args)` pattern we introduced with object-oriented programming (OOP) in Ruby. We're already familiar with defining and using setters and getters on instances of classes, but what does it mean when we call a method directly on a class instead of an instance?
 
 For example, let's say we have a model named `Person`. We can create new objects by using `Person.new`.
 
